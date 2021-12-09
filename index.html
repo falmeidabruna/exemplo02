@@ -26,6 +26,11 @@
         
         let l = 1;
         let c = 1;
+        let pose = 0;
+        let quadro = 0;
+        const POSES = {
+            7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 6, 6, 6, 6, 13, 13, 13, 13, 6, 
+        };
 
             function terminouDeCarregar (params) {
                 ctx.drawImage(skelly,
@@ -34,7 +39,7 @@
                 //dx, dy, dw, dh
                 0, 0, 64,64 );
                 
-            }
+            };
         let t0;
         let dt;
         
@@ -44,20 +49,17 @@
             dt = (t - t0)/1000;
             desenhaFundo();
 
-            c = c+ 9*dt;
-            if(c > 6){
-                c = 0;
-            }
+            quadro = (quadro >= POSES [poses] -1) ? 0 : quadro + 9 * dt;
 
             ctx.drawImage(skelly,
                 //sx, sy, sw, sh
-                Math.floor(c)*64, l*64, 64, 64,
+                Math.floor(quadro)*64, pose*64, 64, 64,
                 //dx, dy, dw, dh
                 0, 0, 64,64 );
 
             requestAnimationFrame(passo);
             t0 = t;
-        }
+        };
     </script>
 </body>
 </html>
